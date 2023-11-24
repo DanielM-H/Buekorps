@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <h2>Login Page</h2>
+  <form id="login-form">
+    <div class="container">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+
+      <button type="submit">Login</button>
+    </div>
+  </form>
+  <div id="message"></div>
+
+
+  
+  <script>
+    $('#login-form').on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        url: '/login',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+          $('#message').text(data.message);
+          if (data.users) {
+            data.users.forEach(user => {
+              $('#message').append(`<p>${user.name} (${user.email})</p>`);
+            });
+          }
+        },
+        error: function(err) {
+          $('#message').text(err.responseJSON.message);
+        }
+      });
+    });
+
+    
+  </script>
+</body>
+</html>
