@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/register" method="POST">
+        <input type="text" name="name" placeholder="Navn" required>
+        <input type="email" name="email" placeholder="Epost" required>
+        <select name="role" required>
+            <option value="">Velg rolle</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Leader">Leader</option>
+            <option value="Member">Member</option>
+        </select>
+        <select name="organization" required>
+            <option value="">Velg organisasjon</option>
+            <!-- Add options for each organization here -->
+            <option value="1">Skansens Bataljon</option>
+            <option value="2">Sydnæs Bataljon</option>
+            <option value="3">Nordnes Bataljon</option>
+            <!-- ... -->
+        </select>
+        <input type="password" name="password" placeholder="Passord" required>
+        <input type="submit" value="Send inn">
+    </form>
+</html>
